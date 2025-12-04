@@ -58,3 +58,4 @@ exports.deleteProject = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err });
   }
 };
+module.exports = { createProject, getMyProjects, updateProject, deleteProject };
