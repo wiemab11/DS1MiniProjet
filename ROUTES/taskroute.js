@@ -6,7 +6,7 @@ const {
   updateTask,
   deleteTask,
 } = require("../controllers/taskcontroller");
-const auth = require("../middleware/authMiddleware");
+const auth = require("../middlewares/authmiddlerwares");
 
 // Créer une tâche pour un projet
 router.post("/:projectId", auth, createTask);

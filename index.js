@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const userRoute = require('./ROUTES/authroute');
+const authRoute = require('./ROUTES/authroute');
 const projetRoute = require('./ROUTES/projetroute');
 const taskRoute = require('./ROUTES/taskroute');
 const app = express();
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/PROJETDS1')
 
 
 // Routes
-app.use('/api/users', userRoute);
+app.use('/api/users', authRoute);
 app.use('/api/projects', projetRoute);
 app.use('/api/tasks', taskRoute);
 

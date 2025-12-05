@@ -1,7 +1,7 @@
 const Project = require("../models/projet");
 
 
-exports.createProject = async (req, res) => {
+const createProject = async (req, res) => {
   try {
     const { title, description } = req.body;
 
@@ -18,7 +18,7 @@ exports.createProject = async (req, res) => {
 };
 
 
-exports.getMyProjects = async (req, res) => {
+const getMyProjects = async (req, res) => {
   try {
     const projects = await Project.find({ user: req.user.id });
     res.status(200).json(projects);
@@ -28,7 +28,7 @@ exports.getMyProjects = async (req, res) => {
 };
 
 
-exports.updateProject = async (req, res) => {
+const updateProject = async (req, res) => {
   try {
     const project = await Project.findOneAndUpdate(
       { _id: req.params.id, user: req.user.id },
@@ -44,7 +44,7 @@ exports.updateProject = async (req, res) => {
 };
 
 
-exports.deleteProject = async (req, res) => {
+const deleteProject = async (req, res) => {
   try {
     const project = await Project.findOneAndDelete({
       _id: req.params.id,

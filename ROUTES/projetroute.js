@@ -5,8 +5,8 @@ const {
   getMyProjects,
   updateProject,
   deleteProject,
-} = require("../controllers/projectcontroller");
-const auth = require("../middleware/authMiddleware");
+} = require("../controllers/projetcontroller");
+const auth = require("../middlewares/authmiddlerwares");
 
 // Créer un projet
 router.post("/", auth, createProject);

@@ -5,7 +5,7 @@ const {
   login,
   getProfile,
 } = require("../controllers/usercontroller");
-const auth = require("../middleware/authMiddleware");
+const auth = require("../middlewares/authmiddlerwares");
 
 // Inscription
 router.post("/register", register);

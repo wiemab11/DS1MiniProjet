@@ -1,8 +1,8 @@
 const Task = require("../models/task");
-const Project = require("../models/Project");
+const Project = require("../models/projet");
 
 // ------------------ CREATE TASK ------------------
-exports.createTask = async (req, res) => {
+const createTask = async (req, res) => {
   try {
     const { title, status } = req.body;
     const projectId = req.params.projectId;
@@ -24,7 +24,7 @@ exports.createTask = async (req, res) => {
 };
 
 // ------------------ GET TASKS OF A PROJECT ------------------
-exports.getProjectTasks = async (req, res) => {
+const getProjectTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ project: req.params.projectId });
     res.status(200).json(tasks);
@@ -34,7 +34,7 @@ exports.getProjectTasks = async (req, res) => {
 };
 
 // ------------------ UPDATE TASK ------------------
-exports.updateTask = async (req, res) => {
+const updateTask = async (req, res) => {
   try {
     const taskId = req.params.id;
 
@@ -51,7 +51,7 @@ exports.updateTask = async (req, res) => {
 };
 
 // ------------------ DELETE TASK ------------------
-exports.deleteTask = async (req, res) => {
+const deleteTask = async (req, res) => {
   try {
     const taskId = req.params.id;
 
