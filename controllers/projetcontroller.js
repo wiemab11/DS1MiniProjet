@@ -1,23 +1,24 @@
 const Project = require("../models/projet");
 
-
+// hedha controller bech naamlo bih creation de projet w gestion meta3hom
 const createProject = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { name, description } = req.body;
 
     const project = await Project.create({
-      title,
+      name,
       description,
-      user: req.user.id,
+      owner: req.user.id,
     });
 
     res.status(201).json({ message: "Projet créé", project });
   } catch (err) {
-    res.status(500).json({ message: "Erreur ", error: err });
+    res.status(500).json({ message: "Erreur", error: err.message });
   }
 };
 
 
+//hedha bech yjibli projets mt3i
 const getMyProjects = async (req, res) => {
   try {
     const projects = await Project.find({ user: req.user.id });
@@ -27,7 +28,7 @@ const getMyProjects = async (req, res) => {
   }
 };
 
-
+//hedha bech naaml update lil projet
 const updateProject = async (req, res) => {
   try {
     const project = await Project.findOneAndUpdate(
@@ -43,7 +44,7 @@ const updateProject = async (req, res) => {
   }
 };
 
-
+//hedha bech naaml delete lil projet
 const deleteProject = async (req, res) => {
   try {
     const project = await Project.findOneAndDelete({
@@ -58,4 +59,5 @@ const deleteProject = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err });
   }
 };
+//exporter les fonctions
 module.exports = { createProject, getMyProjects, updateProject, deleteProject };

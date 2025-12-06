@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //hedha bech n'importi bibliothéque mongoose
 
 const connectDB = async () => {
   try {
@@ -8,6 +8,6 @@ const connectDB = async () => {
     console.error(err.message);
     process.exit(1);
   }
-};
+}; //c'est l'etape bech naaml connexion avec mongodb  
 
-module.exports = connectDB;
+module.exports = connectDB; //houni bech nexporty fonction de connexion de base de donné 

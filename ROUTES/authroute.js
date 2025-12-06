@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+//hedha route mt3 authentication
 const {
   register,
   login,
@@ -7,13 +8,10 @@ const {
 } = require("../controllers/usercontroller");
 const auth = require("../middlewares/authmiddlerwares");
 
-// Inscription
 router.post("/register", register);
 
-// Connexion
 router.post("/login", login);
 
-// Profil (token requis)
 router.get("/me", auth, getProfile);
 
 module.exports = router;

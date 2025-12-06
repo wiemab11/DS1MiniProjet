@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+//lenna bech naamlou routes mt3 task
 const {
   createTask,
   getProjectTasks,
@@ -8,16 +9,16 @@ const {
 } = require("../controllers/taskcontroller");
 const auth = require("../middlewares/authmiddlerwares");
 
-// Créer une tâche pour un projet
+// lenna bech ncréeration metaa tâche pour un projet
 router.post("/:projectId", auth, createTask);
 
-// Voir toutes les tâches d'un projet
+// houni bech nchoufo toutes les tâches d'un projet
 router.get("/:projectId", auth, getProjectTasks);
 
-// Mettre à jour une tâche
+// leena aana update  une tâche
 router.put("/:id", auth, updateTask);
 
-// Supprimer une tâche
+// o leennaa nsupprimer une tâche
 router.delete("/:id", auth, deleteTask);
 
 module.exports = router;

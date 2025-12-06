@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//hedha modele de schema de projet
 const ProjectSchema = new mongoose.Schema({
   name: { type: String, required: true }, // nom du projet
   description: { type: String },

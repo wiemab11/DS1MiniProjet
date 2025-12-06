@@ -2,7 +2,7 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
+//fonction bech tgenerate token
 const generateToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -10,20 +10,20 @@ const generateToken = (userId) => {
 };
 
 
-
+//hedha bech naaml register utilisateur
 exports.register = async (req, res) => {
   try {
     const { nom, login, password, role } = req.body;
 
-    // Vérifier si login existe
+    // nverifier si login est déjà utilisé
     const exists = await User.findOne({ login });
     if (exists) return res.status(400).json({ message: "Login déjà utilisé" });
 
-    // 🔐 Hasher le mot de passe
+    //ncryptage mot de passe
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Création utilisateur
+    //naaml création utilisateur
     const newUser = await User.create({
       nom,
       login,
@@ -41,7 +41,7 @@ exports.register = async (req, res) => {
   }
 };
 
-
+//leena aandy bech naaml login utilisateur
 exports.login = async (req, res) => {
   try {
     const { login, password } = req.body;
@@ -62,7 +62,7 @@ exports.login = async (req, res) => {
   }
 };
 
-
+//hedha bech yjibli profile mt3i
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");

@@ -1,13 +1,12 @@
 const Task = require("../models/task");
 const Project = require("../models/projet");
 
-// ------------------ CREATE TASK ------------------
+//hedha bech naaml creation de task
 const createTask = async (req, res) => {
   try {
     const { title, status } = req.body;
     const projectId = req.params.projectId;
 
-    // vérifier si projet appartient à l'utilisateur
     const project = await Project.findOne({ _id: projectId, user: req.user.id });
     if (!project) return res.status(404).json({ message: "Projet introuvable" });
 
@@ -23,7 +22,7 @@ const createTask = async (req, res) => {
   }
 };
 
-// ------------------ GET TASKS OF A PROJECT ------------------
+//lhne bech njibli tasks mt3 projet moayen
 const getProjectTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ project: req.params.projectId });
@@ -33,7 +32,7 @@ const getProjectTasks = async (req, res) => {
   }
 };
 
-// ------------------ UPDATE TASK ------------------
+//lena bech naaml update lil task
 const updateTask = async (req, res) => {
   try {
     const taskId = req.params.id;
@@ -50,7 +49,7 @@ const updateTask = async (req, res) => {
   }
 };
 
-// ------------------ DELETE TASK ------------------
+//lena bech naaml delete lil task
 const deleteTask = async (req, res) => {
   try {
     const taskId = req.params.id;
@@ -63,5 +62,5 @@ const deleteTask = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err });
   }
 };
-
+//nexpoter les fonction eli teb3ine lprojet
 module.exports = { createTask, getProjectTasks, updateTask, deleteTask };
